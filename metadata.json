@@ -1,0 +1,6 @@
+{
+  "name": "ZenSpace - Guided Meditation",
+  "description": "A custom guided meditation app with AI-generated visuals, voiceovers, and a personal meditation coach.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
