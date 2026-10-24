@@ -1,3 +1,4 @@
+import { localApiOnly } from './local-api-guard.mjs';
 import express from 'express';
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from 'dotenv';
@@ -10,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+app.use('/api', localApiOnly(() => PORT));
 app.use(express.json({ limit: '50mb' }));
 
 if (process.env.NODE_ENV !== 'production') {
@@ -185,6 +187,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, "127.0.0.1", () => {
   console.log(`Server running on port ${PORT}`);
 });
